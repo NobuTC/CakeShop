@@ -4,8 +4,13 @@ export default function Home() {
   return (
     <main className="">
       <div>
-        <Link href="/search">etsiäää</Link>
+        <Link href="/product/1">Go to product ID 1</Link>
       </div>
     </main>
   );
 }
+
+export const metadata = {
+  title: "CakeApp",
+  description: " Nextgen ecom",
+};
