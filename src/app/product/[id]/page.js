@@ -7,15 +7,18 @@ export default function Product({ params }) {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 ">
-      <div className="p-4">
-        <Image
-          isZoomed
-          width={"100%"}
-          alt="NextUI Fruit Image with Zoom"
-          src="https://nextui-docs-v2.vercel.app/images/fruit-1.jpeg"
-        />
+      <div className="flex justify-center items-center h-full">
+        <div className="p-4">
+          <Image
+            isZoomed
+            width={400}
+            alt="NextUI Fruit Image with Zoom"
+            src="https://nextui-docs-v2.vercel.app/images/fruit-1.jpeg"
+          />
+        </div>
       </div>
-      <div className="p-4">
+
+      <div className="p-8">
         <Card>
           <CardHeader className="flex gap-3">
             <div className="flex flex-col">
