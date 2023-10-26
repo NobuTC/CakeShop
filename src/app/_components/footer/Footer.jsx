@@ -2,8 +2,8 @@ import React from "react";
 
 function Footer() {
   return (
-    <footer className="bg-gray-200 text-center py-2">
-      <p className="text-gray-600">&copy; 2023 Your Company</p>
+    <footer class="fixed inset-x-0 bottom-0 bg-gray-200 text-center py-2">
+      <p>&copy; 2023 Jenni Tran</p>
     </footer>
   );
 }

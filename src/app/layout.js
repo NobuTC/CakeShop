@@ -12,9 +12,12 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={inter.className}>
         <Providers>
-          <MyNavBar />
-          <div className="container mx-auto">{children}</div>
-          <Footer />
+          <div className="relative min-h-screen">
+            <MyNavBar />
+            <div className="container mx-auto">{children}</div>
+
+            <Footer />
+          </div>
         </Providers>
       </body>
     </html>
