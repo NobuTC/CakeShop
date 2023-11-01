@@ -12,32 +12,34 @@ export default function MyNavBar() {
   return (
     <Navbar position="static">
       <NavbarBrand>
-        <p className="font-bold text-inherit">Cakeapp</p>
+        <Link href="/" color="foreground">
+          <p className="font-bold text-inherit">Kakkukauppa</p>
+        </Link>
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            Features
-          </Link>
-        </NavbarItem>
         <NavbarItem isActive>
-          <Link href="#" aria-current="page">
-            Customers
+          <Link color="foreground" aria-current="page" href="/category">
+            Categoria
+          </Link>
+        </NavbarItem>
+        <NavbarItem>
+          <Link href="#" color="foreground">
+            Haku
           </Link>
         </NavbarItem>
         <NavbarItem>
           <Link color="foreground" href="#">
-            Integrations
+            Kakku tarina
           </Link>
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex">
-          <Link href="#">Login</Link>
+          <Link href="#">Kori</Link>
         </NavbarItem>
         <NavbarItem>
           <Button as={Link} color="primary" href="#" variant="flat">
-            Sign Up
+            Kassalle
           </Button>
         </NavbarItem>
       </NavbarContent>
