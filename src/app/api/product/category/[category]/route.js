@@ -18,5 +18,5 @@ export async function GET(request, { params }) {
 
   console.log("Found product by id ", products);
 
-  return Response.json({ products });
+  return Response.json({ products, count: products.length });
 }
