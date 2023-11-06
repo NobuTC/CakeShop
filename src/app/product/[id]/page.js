@@ -1,9 +1,29 @@
+import Selector from "@/app/_components/selector/Selector";
+
 import { Button, CardHeader, Chip, Image } from "@nextui-org/react";
 import { Card, CardBody } from "@nextui-org/react";
 import { Textarea } from "@nextui-org/react";
 
-export default function Product({ params }) {
-  //return <div>PRODUCT! {params.id}</div>;
+async function getProduct(id) {
+  try {
+    const res = await fetch(process.env.URL + "/api/product/" + id);
+    if (res.status === 200) {
+      return res.json();
+    } else {
+      return { product: null };
+    }
+  } catch (error) {
+    console.error("Error fetching product data by id : " + id);
+    return { product: null };
+  }
+}
+
+export default async function Product({ params: { id } }) {
+  const { product } = await getProduct(id);
+
+  if (!product) {
+    return null;
+  }
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 ">
@@ -22,10 +42,8 @@ export default function Product({ params }) {
         <Card>
           <CardHeader className="flex gap-3">
             <div className="flex flex-col">
-              <p className="text-md">Mangojuusto kakku</p>
-              <p className="text-small text-default-500">
-                Ihanan mango juusto tuoreella juustolla
-              </p>
+              <p className="text-md">{product.name}</p>
+              <p className="text-small text-default-500">{product.info}</p>
             </div>
           </CardHeader>
           <CardBody>
@@ -33,11 +51,9 @@ export default function Product({ params }) {
               <Chip color="default">L</Chip>
               <Chip color="primary">G</Chip>
             </div>
-            <div className="row mt-2 flex gap-2">
-              <Chip color="warning" variant="bordered">
-                6 hlö
-              </Chip>
-            </div>
+
+            <Selector />
+
             <div className="row mt-5">
               <Textarea
                 label="Valinnainen"
