@@ -1,4 +1,4 @@
-import Selector from "@/app/_components/selector/Selector";
+import Selector from "../../_components/selector/Selector";
 
 import { Button, CardHeader, Chip, Image } from "@nextui-org/react";
 import { Card, CardBody } from "@nextui-org/react";
@@ -27,15 +27,13 @@ export default async function Product({ params: { id } }) {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 ">
-      <div className="flex justify-center items-center h-full">
-        <div className="p-4">
-          <Image
-            isZoomed
-            width={400}
-            alt="NextUI Fruit Image with Zoom"
-            src="https://nextui-docs-v2.vercel.app/images/fruit-1.jpeg"
-          />
-        </div>
+      <div className="flex justify-end items-center h-full">
+        <Image
+          isZoomed
+          width={400}
+          alt="NextUI Fruit Image with Zoom"
+          src="https://nextui-docs-v2.vercel.app/images/fruit-1.jpeg"
+        />
       </div>
 
       <div className="p-8">
