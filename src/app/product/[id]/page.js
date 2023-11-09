@@ -46,11 +46,16 @@ export default async function Product({ params: { id } }) {
           </CardHeader>
           <CardBody>
             <div className="row flex gap-2">
-              <Chip color="default">L</Chip>
-              <Chip color="primary">G</Chip>
+              {product.info_allergic.map((allergic) => {
+                return (
+                  <Chip key={allergic} color="primary">
+                    {allergic}
+                  </Chip>
+                );
+              })}
             </div>
 
-            <Selector />
+            <Selector price={product.price} size={product.size} />
 
             <div className="row mt-5">
               <Textarea

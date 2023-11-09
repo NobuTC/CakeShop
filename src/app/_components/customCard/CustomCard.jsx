@@ -1,8 +1,10 @@
 "use client";
-import { Card, CardBody, CardFooter, Image } from "@nextui-org/react";
+import { Card, CardBody, CardFooter, Chip, Image } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 
 import React from "react";
+
+() => {};
 
 function CustomCard({ item }) {
   const router = useRouter();
@@ -29,6 +31,16 @@ function CustomCard({ item }) {
       </CardBody>
       <CardFooter className="text-small justify-between">
         <b>{item.name}</b>
+        <div className="row flex gap-2">
+          {item.info_allergic.map((allergic) => {
+            return (
+              <Chip key={allergic} color="primary">
+                {allergic}
+              </Chip>
+            );
+          })}
+        </div>
+
         <p className="text-default-500">{item.price}€</p>
       </CardFooter>
     </Card>
