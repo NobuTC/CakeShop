@@ -8,10 +8,6 @@ import {
 } from "@nextui-org/react";
 import { Input } from "@nextui-org/react";
 
-export function datepicker() {
-  const [datepicker] = new Date();
-}
-
 export default function Checkout() {
   return (
     <div className="live-preview flex h-full w-full not-prose justify-center items-center ">
