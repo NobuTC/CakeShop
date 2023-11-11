@@ -5,10 +5,13 @@ import {
   NavbarContent,
   NavbarItem,
   Button,
+  Chip,
+  Badge,
 } from "@nextui-org/react";
 import { useCart } from "../../providers";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
+import { CartIcon } from "../icons/CartIcon";
 
 export default function MyNavBar() {
   // Same: const cartState = useCart().cartState
@@ -16,8 +19,8 @@ export default function MyNavBar() {
   const router = useRouter();
 
   function cartCount() {
-    if (cartState.cart && cartState.cart.length > 0) {
-      return `(${cartState.cart.length})`;
+    if (isClient && cartState.cart && cartState.cart.length > 0) {
+      return <Chip color="danger">{cartState.cart.length}</Chip>;
     } else {
       return "";
     }
@@ -28,6 +31,8 @@ export default function MyNavBar() {
   useEffect(() => {
     setIsClient(true);
   }, []);
+
+  const basketCount = isClient && cartState.cart ? cartState.cart.length : 0;
 
   return (
     <Navbar position="static">
@@ -54,15 +59,20 @@ export default function MyNavBar() {
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
-        <NavbarItem className="hidden lg:flex">
-          {isClient && <Link href="#">Kori {cartCount()}</Link>}
-        </NavbarItem>
         <NavbarItem>
           <Button
-            color="primary"
+            className="p-4 font-semibold"
+            color="default"
             variant="flat"
             onPress={() => router.push("/checkout")}
           >
+            {!!basketCount && (
+              <Badge color="danger" content={basketCount} shape="circle">
+                <CartIcon size={25} />
+              </Badge>
+            )}
+            {!basketCount && <CartIcon size={25} />}
+            <span className="mr-1"></span>
             Kassalle
           </Button>
         </NavbarItem>

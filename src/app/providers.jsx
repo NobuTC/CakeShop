@@ -29,7 +29,7 @@ const cartReducer = (state, action) => {
 
 const CartContext = createContext(); // create duck storage, this is React's own function
 
-const CartProviderClient = ({ children }) => {
+export const CartProvider = ({ children }) => {
   // Check if localStorage is available (client side)
   const isLocalStorageAvailable =
     typeof window !== "undefined" && window.localStorage;
@@ -56,19 +56,6 @@ const CartProviderClient = ({ children }) => {
     </CartContext.Provider>
   );
 };
-
-const CartProviderServer = ({ children }) => {
-  const [cartState, dispatch] = useReducer(cartReducer, { cart: [] });
-  return (
-    <CartContext.Provider value={{ cartState, dispatch }}>
-      {children}
-    </CartContext.Provider>
-  );
-};
-
-const isBrowser = typeof window !== "undefined";
-
-export const CartProvider = CartProviderClient;
 
 export const useCart = () => {
   const context = useContext(CartContext); // this is from React
