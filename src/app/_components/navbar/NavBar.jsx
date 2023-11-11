@@ -1,14 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Navbar,
   NavbarBrand,
   NavbarContent,
   NavbarItem,
-  Link,
   Button,
 } from "@nextui-org/react";
+import { useCart } from "../../providers";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function MyNavBar() {
+  // Same: const cartState = useCart().cartState
+  const { cartState } = useCart();
+  const router = useRouter();
+
+  function cartCount() {
+    if (cartState.cart && cartState.cart.length > 0) {
+      return `(${cartState.cart.length})`;
+    } else {
+      return "";
+    }
+  }
+
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
+
   return (
     <Navbar position="static">
       <NavbarBrand>
@@ -35,10 +55,14 @@ export default function MyNavBar() {
       </NavbarContent>
       <NavbarContent justify="end">
         <NavbarItem className="hidden lg:flex">
-          <Link href="#">Kori</Link>
+          {isClient && <Link href="#">Kori {cartCount()}</Link>}
         </NavbarItem>
         <NavbarItem>
-          <Button as={Link} color="primary" href="#" variant="flat">
+          <Button
+            color="primary"
+            variant="flat"
+            onPress={() => router.push("/checkout")}
+          >
             Kassalle
           </Button>
         </NavbarItem>

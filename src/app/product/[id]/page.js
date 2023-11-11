@@ -1,4 +1,4 @@
-import ProductPage from "../../_components/pages/ProductPage";
+import ProductPage from "../../_components/clientPages/ProductPage";
 
 async function getProduct(id) {
   try {

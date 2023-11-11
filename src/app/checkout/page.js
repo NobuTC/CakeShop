@@ -1,11 +1,4 @@
-import {
-  Card,
-  CardBody,
-  Button,
-  CardHeader,
-  CardFooter,
-  Divider,
-} from "@nextui-org/react";
+import { Card, CardBody, Button } from "@nextui-org/react";
 import { Input } from "@nextui-org/react";
 
 export default function Checkout() {
