@@ -2,7 +2,9 @@ import CustomCard from "../../_components/customCard/CustomCard";
 
 async function getProducts(id) {
   try {
-    const res = await fetch(process.env.URL + "/api/product/category/" + id);
+    const res = await fetch(
+      process.env.VERCEL_URL + "/api/product/category/" + id
+    );
     if (res.status === 200) {
       return res.json();
     } else {
