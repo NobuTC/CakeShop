@@ -2,7 +2,7 @@ import ProductPage from "../../_components/pages/ProductPage";
 
 async function getProduct(id) {
   try {
-    const res = await fetch(process.env.VERCEL_URL + "/api/product/" + id);
+    const res = await fetch(process.env.NEXT_PUBLIC_URL + "/api/product/" + id);
     if (res.status === 200) {
       return res.json();
     } else {
