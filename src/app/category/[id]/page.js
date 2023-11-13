@@ -27,7 +27,7 @@ export default async function Category({ params: { id } }) {
   console.log(products);
 
   return (
-    <div>
+    <div className="container mx-auto">
       <div className="p-4">
         <h1 className="text-3xl text-center"> {id}</h1>
       </div>

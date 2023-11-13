@@ -1,21 +1,9 @@
+import { Button, Image } from "@nextui-org/react";
 import Link from "next/link";
+import FrontPage from "./_components/clientPages/FrontPage";
 
 export default function Home() {
-  return (
-    <main className="">
-      <ul>
-        <li>
-          <Link href="/product/1">Go to product ID 1</Link>
-        </li>
-        <li>
-          <Link href="/category">Go to category</Link>
-        </li>
-        <li>
-          <Link href="checkout">Go to checkout</Link>
-        </li>
-      </ul>
-    </main>
-  );
+  return <FrontPage />;
 }
 
 export const metadata = {

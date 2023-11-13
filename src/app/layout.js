@@ -23,8 +23,7 @@ export default function RootLayout({ children }) {
           <CartProvider>
             <div className="relative min-h-screen">
               <MyNavBar suppressHydrationWarning={true} />
-              <div className="container mx-auto">{children}</div>
-              <Footer />
+              <div className=" mx-auto">{children}</div>
             </div>
           </CartProvider>
         </Providers>
