@@ -23,8 +23,8 @@ export default function ProductPage({ product }) {
   const onClickingOrderBtn = (event) => {
     event.preventDefault();
     console.log("Kakku on lisätty koriin", product, customerMessage);
-
-    dispatch({ type: "ADD_TO_CART", payload: product });
+    const orderProduct = { message: customerMessage, product: product };
+    dispatch({ type: "ADD_TO_CART", payload: orderProduct });
   };
 
   return (

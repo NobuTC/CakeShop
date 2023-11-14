@@ -45,4 +45,5 @@ model OrderProduct {
   quantity  Int
   order     Order   @relation(fields: [orderId], references: [id])
   product   Product @relation(fields: [productId], references: [id])
+  optional_text String?
 }

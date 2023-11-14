@@ -41,6 +41,7 @@ export async function POST(request) {
     OrderProduct: {
       create: OrderProducts.map((item) => ({
         quantity: item.quantity,
+        optional_text: item.optional_text,
         product: {
           connect: { id: item.productId },
         },
