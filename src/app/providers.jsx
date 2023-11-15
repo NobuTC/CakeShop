@@ -1,7 +1,7 @@
 // app/providers.tsx
 "use client";
 
-import { NextUIProvider } from "@nextui-org/react";
+import { NextUIProvider, useDisclosure } from "@nextui-org/react";
 import { createContext, useContext, useEffect, useReducer } from "react";
 
 export function Providers({ children }) {
@@ -10,10 +10,19 @@ export function Providers({ children }) {
 
 const cartReducer = (state, action) => {
   if (action.type === "ADD_TO_CART") {
-    console.log("saving to context");
     return {
       ...state, // copy the old data
       cart: [...state.cart, action.payload], // copy old cart and add product (payload) to it
+    };
+  }
+
+  if (action.type === "DELETE_FROM_CART") {
+    const oldCart = [...state.cart];
+    const indexToDelete = action.payload;
+    oldCart.splice(indexToDelete, 1);
+    return {
+      ...state,
+      cart: [...oldCart],
     };
   }
 
@@ -40,7 +49,10 @@ export const CartProvider = ({ children }) => {
   const savedDataArray = JSON.parse(savedDataString); // this can be null
   const storedCart = savedDataArray || []; // is array always
   // beginning data
-  const [cartState, dispatch] = useReducer(cartReducer, { cart: storedCart }); // this is from React
+
+  const [cartState, dispatch] = useReducer(cartReducer, {
+    cart: storedCart,
+  }); // this is from React
 
   useEffect(() => {
     // change array to string
@@ -63,4 +75,24 @@ export const useCart = () => {
     throw new Error("useCart must be used within a CartProvider");
   }
   return context;
+};
+
+const OpenContext = createContext();
+
+export const useOpenContext = () => {
+  const context = useContext(OpenContext);
+  if (!context) {
+    throw new Error("useOpenContext must be used within an OpenProvider");
+  }
+  return context;
+};
+
+export const OpenProvider = ({ children }) => {
+  const { isOpen, onOpen, onOpenChange } = useDisclosure();
+
+  return (
+    <OpenContext.Provider value={{ isOpen, onOpen, onOpenChange }}>
+      {children}
+    </OpenContext.Provider>
+  );
 };

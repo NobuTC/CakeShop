@@ -4,12 +4,14 @@ import { Button, CardHeader, Chip, Image } from "@nextui-org/react";
 import { Card, CardBody } from "@nextui-org/react";
 import { Textarea } from "@nextui-org/react";
 import { useState } from "react";
-import { useCart } from "../../providers";
+import { useCart, useOpenContext } from "../../providers";
 
 export default function ProductPage({ product }) {
   // this is how we use context to get the ducks out or send the duck to context
   // same const dispatch = useCart().dispatch
   const { dispatch } = useCart();
+
+  const { onOpen } = useOpenContext();
 
   const [customerMessage, setCustomerMessage] = useState("");
   if (!product) {
@@ -25,6 +27,7 @@ export default function ProductPage({ product }) {
     console.log("Kakku on lisätty koriin", product, customerMessage);
     const orderProduct = { message: customerMessage, product: product };
     dispatch({ type: "ADD_TO_CART", payload: orderProduct });
+    onOpen();
   };
 
   return (
