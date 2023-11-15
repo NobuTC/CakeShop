@@ -8,15 +8,14 @@ import {
   Chip,
   Badge,
 } from "@nextui-org/react";
-import { useCart } from "../../providers";
+import { useCart, useOpenContext } from "../../providers";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { CartIcon } from "../icons/CartIcon";
 
 export default function MyNavBar() {
-  // Same: const cartState = useCart().cartState
   const { cartState } = useCart();
-  const router = useRouter();
+  const { onOpen } = useOpenContext();
 
   function cartCount() {
     if (isClient && cartState.cart && cartState.cart.length > 0) {
@@ -64,7 +63,7 @@ export default function MyNavBar() {
             className="p-4 font-semibold"
             color="default"
             variant="flat"
-            onPress={() => router.push("/checkout")}
+            onPress={onOpen}
           >
             {!!basketCount && (
               <Badge color="danger" content={basketCount} shape="circle">
