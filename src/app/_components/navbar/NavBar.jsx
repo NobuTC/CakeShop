@@ -72,7 +72,7 @@ export default function MyNavBar() {
             )}
             {!basketCount && <CartIcon size={25} />}
             <span className="mr-1"></span>
-            Kassalle
+            Kori
           </Button>
         </NavbarItem>
       </NavbarContent>
