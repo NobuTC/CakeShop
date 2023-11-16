@@ -1,8 +1,8 @@
 "use client";
-import { Inter } from "next/font/google";
+import { Playfair_Display } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const inter = Playfair_Display({ subsets: ["latin"] });
 
 import MyNavBar from "./_components/navbar/NavBar";
 import Footer from "./_components/footer/Footer";
