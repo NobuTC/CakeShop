@@ -4,46 +4,39 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React from "react";
 
+import "./frontpage.css";
+
 export default function FrontPage() {
   const router = useRouter();
   return (
-    <main className="">
-      <div>
-        {/*    <ul>
-          <li>
-            <Link href="/product/1">Go to product ID 1</Link>
-          </li>
-          <li>
-            <Link href="/category">Go to category</Link>
-          </li>
-          <li>
-            <Link href="checkout">Go to checkout</Link>
-          </li>
-        </ul> */}
+    <main className="mx-auto">
+      <div className="mx-auto">
+        <div className="mx-auto container bg-cover bg-center frontpage flex">
+          <div className="relative flex-1 md:flex-3 p-2">
+            <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center">
+              <h1 className="text-4xl mb-4">Juhlat Tulossa?</h1>
+              <h2 className="text-2xl mb-4">Tilaa kakku ja herkuttele!</h2>
+              <Button
+                className="row mt-6 front-page-btn"
+                onClick={() => {
+                  router.push("/category");
+                }}
+                color="default"
+              >
+                Katso kakku ehtoja
+              </Button>
+            </div>
+          </div>
 
-        <div
-          className="relative bg-cover bg-center ..."
-          style={{
-            backgroundImage: "url(https://i.imgur.com/0iwqIfJ.jpg)",
-            width: "100%",
-            height: "100vh",
-          }}
-        >
-          <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2  text-center">
-            <h1 className="text-4xl mb-4">
-              Juhlat Tulossa? Tilaa kakku ja herkuttele!
-            </h1>
-            <Button
-              className="row mt-6"
-              onClick={() => {
-                router.push("/category");
-              }}
-              color="default"
-              variant="light"
-              type="submit"
-            >
-              Katso kakku ehtoja
-            </Button>
+          <div className="hidden md:flex md:flex-1 p-6 text-center flex items-center justify-center">
+            <div className="relative">
+              <Image
+                src="https://i.imgur.com/0iwqIfJ.jpg"
+                alt="cake pic"
+                radius="none"
+              />
+              <div className="absolute inset-0 bg-orange-500 rounded-none image-shadow-box"></div>
+            </div>
           </div>
         </div>
       </div>
