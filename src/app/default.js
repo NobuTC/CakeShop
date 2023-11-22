@@ -3,7 +3,7 @@ export default function Error() {
   return (
     <main className="">
       <div>
-        <h1>AAAA default HERE</h1>
+        <h1>Nyt ei toimi</h1>
       </div>
     </main>
   );

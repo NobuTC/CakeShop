@@ -7,7 +7,7 @@ import { useState } from "react";
 import { useCart, useOpenContext } from "../../providers";
 
 export default function ProductPage({ product }) {
-  // this is how we use context to get the ducks out or send the duck to context
+  // this is how we use context to get the cakes out or send the cakes to context
   // same const dispatch = useCart().dispatch
   const { dispatch } = useCart();
 

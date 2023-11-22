@@ -213,7 +213,14 @@ export default function CheckoutPage() {
                   </Select>
                 </div>
 
-                <Button type="submit">Lähetä</Button>
+                <Button
+                  type="submit"
+                  onClick={() => {
+                    router.push("/confirmation");
+                  }}
+                >
+                  Lähetä
+                </Button>
               </CardBody>
             </form>
           </Card>
