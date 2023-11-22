@@ -1,9 +1,9 @@
 import CustomCard from "../../_components/customCard/CustomCard";
 
-async function getProducts(id) {
+async function getProducts(categoryId) {
   try {
     const res = await fetch(
-      process.env.NEXT_PUBLIC_URL + "/api/product/category/" + id
+      process.env.NEXT_PUBLIC_URL + "/api/product/category/" + categoryId
     );
     if (res.status === 200) {
       return res.json();
@@ -11,29 +11,26 @@ async function getProducts(id) {
       return { products: null };
     }
   } catch (error) {
-    console.error("Error fetching products data by id : " + id);
+    console.error("Error fetching products data by id : " + categoryId);
     return { products: null };
   }
 }
 
-export default async function Category({ params: { id } }) {
-  console.log(id);
-  const { products } = await getProducts(id);
+export default async function CategoryPage({ params: { categoryId } }) {
+  const { products } = await getProducts(categoryId);
 
   if (!products) {
     return null;
   }
 
-  console.log(products);
-
   return (
     <div className="container mx-auto">
       <div className="p-4">
-        <h1 className="text-3xl text-center"> {id}</h1>
+        <h1 className="text-3xl text-center"> {categoryId}</h1>
       </div>
       <div className="gap-2 grid grid-cols-2 sm:grid-cols-4 mt-10">
-        {products.map((item, index) => (
-          <CustomCard key={index} item={item} />
+        {products.map((product, index) => (
+          <CustomCard key={index} item={product} />
         ))}
       </div>
     </div>
