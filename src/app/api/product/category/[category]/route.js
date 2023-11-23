@@ -1,9 +1,10 @@
 import prisma from "../../../../../../lib/prisma";
 
 export async function GET(request, { params }) {
-  const category = params.category;
-  const normalizedCategory = category.toLowerCase();
+  const { category } = params;
+  const normalizedCategory = category.toLowerCase(); // BiGaPplE -->bigapple
 
+  // query database
   const products = await prisma.$queryRaw`
   SELECT *
   FROM "Product"

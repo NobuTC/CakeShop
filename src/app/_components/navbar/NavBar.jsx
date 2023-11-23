@@ -41,19 +41,19 @@ export default function MyNavBar() {
         </Link>
       </NavbarBrand>
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarItem isActive>
+        <NavbarItem>
+          <Link color="foreground" aria-current="page" href="/">
+            Kotisivu
+          </Link>
+        </NavbarItem>
+        <NavbarItem>
           <Link color="foreground" aria-current="page" href="/category">
             Categoria
           </Link>
         </NavbarItem>
         <NavbarItem>
-          <Link href="#" color="foreground">
-            Haku
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            Kakku tarina
+          <Link color="foreground" aria-current="page" href="/aboutme">
+            Oma Tarina
           </Link>
         </NavbarItem>
       </NavbarContent>

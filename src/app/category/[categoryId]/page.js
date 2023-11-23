@@ -16,6 +16,7 @@ async function getProducts(categoryId) {
   }
 }
 
+// nextjs obj ===> params ===> categoryId
 export default async function CategoryPage({ params: { categoryId } }) {
   const { products } = await getProducts(categoryId);
 

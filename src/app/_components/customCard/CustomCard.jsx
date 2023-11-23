@@ -4,10 +4,9 @@ import { useRouter } from "next/navigation";
 
 import React from "react";
 
-() => {};
-
 function CustomCard({ item }) {
   const router = useRouter();
+  const { id, name, info_allergic, price } = item;
 
   return (
     <Card
@@ -16,7 +15,7 @@ function CustomCard({ item }) {
       onPress={() => {
         // /product/4
         // /product/5
-        router.push(`/product/${item.id}`);
+        router.push(`/product/${id}`);
       }}
     >
       <CardBody className="overflow-visible p-0">
@@ -24,15 +23,15 @@ function CustomCard({ item }) {
           shadow="sm"
           radius="lg"
           width="100%"
-          alt={item.name}
+          alt={name}
           className="w-full object-cover h-[140px]"
           src="https://nextui-docs-v2.vercel.app/images/fruit-1.jpeg"
         />
       </CardBody>
       <CardFooter className="text-small justify-between">
-        <b>{item.name}</b>
+        <b>{name}</b>
         <div className="row flex gap-2">
-          {item.info_allergic.map((allergic) => {
+          {info_allergic.map((allergic) => {
             return (
               <Chip key={allergic} color="primary">
                 {allergic}
@@ -41,7 +40,7 @@ function CustomCard({ item }) {
           })}
         </div>
 
-        <p className="text-default-500">{item.price}€</p>
+        <p className="text-default-500">{price}€</p>
       </CardFooter>
     </Card>
   );

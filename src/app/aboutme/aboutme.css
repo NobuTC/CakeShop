@@ -1,0 +1,10 @@
+.first-letter {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.divide-line {
+    height: 1px;
+    background-color: #e0e0e0;
+    margin-top: 15px;
+}
