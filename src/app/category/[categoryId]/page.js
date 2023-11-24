@@ -3,7 +3,10 @@ import CustomCard from "../../_components/customCard/CustomCard";
 async function getProducts(categoryId) {
   try {
     const res = await fetch(
-      process.env.NEXT_PUBLIC_URL + "/api/product/category/" + categoryId
+      process.env.NEXT_PUBLIC_URL + "/api/product/category/" + categoryId,
+      {
+        cache: "no-store",
+      }
     );
     if (res.status === 200) {
       return res.json();

@@ -10,10 +10,21 @@ import {
 import { Input } from "@nextui-org/react";
 import { useCart } from "../../providers";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import EmptyCart from "../cart/EmptyCart";
+import {
+  CardElement,
+  useElements,
+  useStripe,
+  Elements,
+  PaymentElement,
+} from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 
-export default function CheckoutPage() {
+export function CheckoutPage1() {
+  const stripe = useStripe();
+  const elements = useElements();
+
   const { cartState, dispatch } = useCart();
   const { cart } = cartState;
   const router = useRouter();
@@ -27,9 +38,43 @@ export default function CheckoutPage() {
   const [date, setDate] = useState("");
   const [deliveryType, setDeliveryType] = useState("");
   const [customerMessage, setCustomerMessage] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const [message, setMessage] = useState(null);
 
   const onSelectingDelivery = (event) => {
     setDeliveryType(event.target.value);
+  };
+
+  const handlePay = async (e) => {
+    if (!stripe || !elements) {
+      // Stripe.js has not yet loaded.
+      // Make sure to disable form submission until Stripe.js has loaded.
+      return;
+    }
+
+    setIsLoading(true);
+
+    const { error } = await stripe.confirmPayment({
+      elements,
+      confirmParams: {
+        // Make sure to change this to your payment completion page
+        return_url: `${window.location.origin}/confirmation`,
+      },
+    });
+
+    // This point will only be reached if there is an immediate error when
+    // confirming the payment. Otherwise, your customer will be redirected to
+    // your `return_url`. For some payment methods like iDEAL, your customer will
+    // be redirected to an intermediate site first to authorize the payment, then
+    // redirected to the `return_url`.
+    if (error.type === "card_error" || error.type === "validation_error") {
+      setMessage(error.message);
+    } else {
+      setMessage("An unexpected error occured.");
+    }
+
+    setIsLoading(false);
   };
 
   const sendOrder = async () => {
@@ -64,13 +109,8 @@ export default function CheckoutPage() {
       body: raw,
       redirect: "follow",
     };
-    await fetch(process.env.NEXT_PUBLIC_URL + "/api/order/add", requestOptions)
-      .then((response) => response.text())
-      .then((result) => {
-        dispatch({ type: "CLEAR_CART" });
-        console.log(result);
-      })
-      .catch((error) => console.log("error", error));
+    await fetch(process.env.NEXT_PUBLIC_URL + "/api/order/add", requestOptions);
+    await handlePay();
   };
 
   if (cart && cart.length === 0) {
@@ -83,13 +123,13 @@ export default function CheckoutPage() {
   };
 
   return (
-    <div>
+    <>
       <div className="container mx-auto">
         <div className="live-preview flex h-full w-full not-prose justify-center items-center ">
           <Card className="border-none m-4">
             <form onSubmit={onSubmit}>
               <CardBody>
-                <h1>Yhteistiedot</h1>
+                <h1 className="text-3xl text-center">Kassa</h1>
                 <div className="m-3 flex space-x-4">
                   <Input
                     isRequired
@@ -212,20 +252,60 @@ export default function CheckoutPage() {
                     </SelectItem>
                   </Select>
                 </div>
+                <div className="mt-5"></div>
+
+                <PaymentElement id="payment-element" />
 
                 <Button
+                  disabled={isLoading || !stripe || !elements}
+                  className="mt-10"
                   type="submit"
-                  onClick={() => {
-                    router.push("/confirmation");
-                  }}
                 >
-                  Lähetä
+                  Maksa
                 </Button>
+
+                {/* Show any error or success messages */}
+                {message && <div id="payment-message">{message}</div>}
               </CardBody>
             </form>
           </Card>
         </div>
       </div>
-    </div>
+    </>
+  );
+}
+
+export default function CheckoutPage() {
+  const [clientSecret, setClientSecret] = useState("");
+
+  const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLIC_KEY);
+
+  useEffect(() => {
+    const myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+
+    async function fetchData() {
+      const paymentRequestOptions = {
+        method: "POST",
+        headers: myHeaders,
+        body: {},
+        redirect: "follow",
+      };
+      const response = await fetch("/api/order/pay", paymentRequestOptions);
+      const clientSecretData = await response.json();
+      setClientSecret(clientSecretData);
+    }
+
+    fetchData();
+  }, []);
+
+  return (
+    <>
+      {clientSecret && stripePromise && (
+        <Elements stripe={stripePromise} options={{ clientSecret }}>
+          <CheckoutPage1 />
+        </Elements>
+      )}
+    </>
   );
 }

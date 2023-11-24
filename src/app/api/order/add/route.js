@@ -27,7 +27,7 @@ export async function POST(request) {
   } = await request.json();
 
   const orderData = {
-    order_completion: false,
+    order_completion: true,
     order_date: new Date(),
     pick_up_date: new Date(pick_up_date),
     optional_text,

@@ -3,7 +3,10 @@ import ProductPage from "../../_components/clientPages/ProductPage";
 async function getProduct(productId) {
   try {
     const res = await fetch(
-      process.env.NEXT_PUBLIC_URL + "/api/product/" + productId
+      process.env.NEXT_PUBLIC_URL + "/api/product/" + productId,
+      {
+        cache: "no-store",
+      }
     );
     if (res.status === 200) {
       return res.json();

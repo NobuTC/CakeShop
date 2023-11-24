@@ -2,9 +2,12 @@
 import { Button, Card, CardBody } from "@nextui-org/react";
 import { useRouter } from "next/navigation";
 import { CheckIcon } from "../icons/CheckIcon";
+import { useCart } from "../../providers";
 
 export default function ConfirmationPage() {
   const router = useRouter();
+  const { dispatch } = useCart();
+  dispatch({ type: "CLEAR_CART" });
 
   return (
     <div className="flex justify-center items-center h-screen">
