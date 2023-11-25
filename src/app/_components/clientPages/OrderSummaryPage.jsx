@@ -11,7 +11,6 @@ import moment from "moment";
 import "moment/locale/fi";
 
 function OrderSummaryPage({ orders }) {
-  console.log("Orders!!!", orders);
   moment.locale("fi");
 
   return (

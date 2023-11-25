@@ -6,6 +6,7 @@ async function getProducts(categoryId) {
       process.env.NEXT_PUBLIC_URL + "/api/product/category/" + categoryId,
       {
         cache: "no-store",
+        next: { revalidate: 1 }, // Recheck every second
       }
     );
     if (res.status === 200) {

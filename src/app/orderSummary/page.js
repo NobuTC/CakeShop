@@ -4,6 +4,7 @@ async function getOrderSummary() {
   try {
     const res = await fetch(process.env.NEXT_PUBLIC_URL + "/api/order/get", {
       cache: "no-store",
+      next: { revalidate: 1 }, // Recheck every second
     });
     if (res.status === 200) {
       return res.json();
