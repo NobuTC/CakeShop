@@ -45,9 +45,9 @@ export default function AboutMe() {
           kakkuja ja tämä blogi on omistettu kaikille kakkujen himoitsijoille!
           Täällä näytän herkullisia ja yksinkertaisia kakkuja, joita voitte
           ostaa. Voin muuttaa reseptejä ja kakun koristeluita jos tahdot. Muista
-          vaan kirjoittaa "Valinnainen" kohdalle. Tilaa ihmeessä vaikka olisi
-          kyseessä syntymäpäiväjuhlat, häätilaus tai vain herkutteluhetki
-          ystävien tai läheisten kanssa.
+          vaan kirjoittaa &quot;Valinnainen&quot; kohdalle. Tilaa ihmeessä
+          vaikka olisi kyseessä syntymäpäiväjuhlat, häätilaus tai vain
+          herkutteluhetki ystävien tai läheisten kanssa.
         </p>
         <br></br>
         <b>
