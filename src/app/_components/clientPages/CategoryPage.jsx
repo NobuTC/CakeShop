@@ -13,12 +13,11 @@ export default function CategoryPage() {
       <div className="live-preview flex h-full w-full not-prose justify-center items-center ">
         <Card isFooterBlurred radius="lg" className="border-none m-4">
           <Image
-            isZoomed
             className="object-cover"
             height={300}
             width={400}
             alt="NextUI Fruit Image with Zoom"
-            src="https://nextui-docs-v2.vercel.app/images/fruit-1.jpeg"
+            src="https://i.imgur.com/c2bO85i.jpg"
           />
           <CardFooter className="justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">
             <p className="text-tiny text-white/80">Juusto kakut</p>
@@ -38,12 +37,11 @@ export default function CategoryPage() {
 
         <Card isFooterBlurred radius="lg" className="border-none m-4">
           <Image
-            isZoomed
             className="object-cover"
             height={300}
             width={400}
             alt="NextUI Fruit Image with Zoom"
-            src="https://nextui-docs-v2.vercel.app/images/fruit-1.jpeg"
+            src="https://i.imgur.com/BAWe2Np.jpg"
           />
           <div>
             <CardFooter className="justify-between before:bg-white/10 border-white/20 border-1 overflow-hidden py-1 absolute before:rounded-xl rounded-large bottom-1 w-[calc(100%_-_8px)] shadow-small ml-1 z-10">

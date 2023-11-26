@@ -6,7 +6,8 @@ import React from "react";
 
 function CustomCard({ item }) {
   const router = useRouter();
-  const { id, name, info_allergic, price } = item;
+  console.log(item);
+  const { id, name, info_allergic, price, image_url } = item;
 
   return (
     <Card
@@ -25,7 +26,7 @@ function CustomCard({ item }) {
           width="100%"
           alt={name}
           className="w-full object-cover h-[140px]"
-          src="https://nextui-docs-v2.vercel.app/images/fruit-1.jpeg"
+          src={image_url}
         />
       </CardBody>
       <CardFooter className="text-small justify-between">

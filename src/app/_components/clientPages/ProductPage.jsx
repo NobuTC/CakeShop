@@ -38,10 +38,11 @@ export default function ProductPage({ product }) {
       >
         <div className="flex justify-end items-center h-full">
           <Image
-            isZoomed
+            className="object-cover"
+            height={300}
             width={400}
             alt="NextUI Fruit Image with Zoom"
-            src="https://nextui-docs-v2.vercel.app/images/fruit-1.jpeg"
+            src={product.image_url}
           />
         </div>
 

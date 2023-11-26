@@ -5,7 +5,6 @@ async function getProduct(productId) {
     const res = await fetch(
       process.env.NEXT_PUBLIC_URL + "/api/product/" + productId,
       {
-        cache: "no-store",
         next: { revalidate: 1 }, // Recheck every second
       }
     );

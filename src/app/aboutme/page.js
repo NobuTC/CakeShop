@@ -11,8 +11,8 @@ export default function AboutMe() {
           </div>
           <div className="">
             <p className="text-gray-400 pr-5">
-              Tervetuloa minun ensimmäiseen blogiini! Täällä kerron vähän miten
-              päädyin aloittamaan minun kakku reissuni.
+              Tervetuloa minun blogiini! Täällä kerron vähän miten päädyin
+              aloittamaan minun kakku reissuni.
             </p>
           </div>
           <div className="flex p-4">
@@ -43,11 +43,20 @@ export default function AboutMe() {
         <p className="text-gray-800 ">
           <span className="first-letter">O</span>n mukavaa leipoa herkullisia
           kakkuja ja tämä blogi on omistettu kaikille kakkujen himoitsijoille!
-          Täällä jaan herkullisia ja yksinkertaisia reseptejä. Myös näytän kakku
-          kuvia miten olen koristellut ja niistä ehkä voit saada inspiraatiota
-          sinun omaan kakkuusi. Olipa kyseessä syntymäpäiväjuhlat, häätilaus tai
-          vain herkutteluhetki ystävien tai läheisten kanssa.
+          Täällä näytän herkullisia ja yksinkertaisia kakkuja, joita voitte
+          ostaa. Voin muuttaa reseptejä ja kakun koristeluita jos tahdot. Muista
+          vaan kirjoittaa "Valinnainen" kohdalle. Tilaa ihmeessä vaikka olisi
+          kyseessä syntymäpäiväjuhlat, häätilaus tai vain herkutteluhetki
+          ystävien tai läheisten kanssa.
         </p>
+        <br></br>
+        <b>
+          <p>
+            Tärkeänä tietona on, että kaikki nyt tässä myytävänä kakuista ei ole
+            minun. Muutamat ovat, koska tarkoituksena on saada kouluprojektiini
+            lisää dataa eli kakkuja.
+          </p>
+        </b>
         <div className="divide-line"></div>
         <p className="text-lg mt-5">
           <b>Esittely</b>
@@ -65,11 +74,8 @@ export default function AboutMe() {
         </p>
         <p className="text-second mt-2">
           Tässä blogissa haluan avata oven oman kakkumaailmani ja haluan jakaa
-          teille herkullisen maukkaita reseptejä, joita olen itse kokeillut,
-          testannut ja kehittänyt, sekä antaa vinkkejä ja neuvoja kakkujen
-          leivonnasta ja myös koristelustakin. Koristelusta tulee myöhemmin
-          lisää. Haluan myös insporoida muita kokeilemaan uusia asioita
-          keittiössä ja rohkaista heitä luottamaan omaan luovuutensa.
+          teille herkullisen maukkaita kakkuja, joita olen itse kokeillut,
+          testannut ja kehittänyt.
         </p>
 
         <p className="text-lg mt-2">
@@ -77,19 +83,20 @@ export default function AboutMe() {
         </p>
 
         <p className="text-second">
-          Yksi suosikkiresepteistäni on Mango-juustokakun valmistus. Tämä
-          resepti on helppo ja yksinkertainen tehdä. Se takaa täydellisen
-          tasapainoin herkullisen mangon ja tuorejuuston välillä. Tarvitset vain
-          muutamia raaka-aineita kuten keksi, voi, liivate, kuohukerma,
-          tuorejuusto, sitruunamehua, sokeria, vaniliinisokeria ja mangopiltti.
-          Tietenkin voi käyttää mitä tahansa keksiä tai tuorejuustoa. Tämä
-          resepti ei ole vain pelkästään Mango-juustokakkuun. Ohjeeni kattaa
-          myös erilaiset erilaiset täytevaihtoehdot, jotta voit muokata kakun
-          juuri omiin tarpeisiisi sopivaksi! Esimerkiksi voit lisätä vaikka
-          passionin, jolloin siitä tulee Mango-juustopassionkakku. Tai jos et
-          halua mangoa, niin voit korjata sen mansikalla tai jopa vademalla.
-          Tämä resepti löytyy minun &quot;Reseptit&quot; kohdalla, jos haluat
-          kurkata miten tämä ihana kakku valmistellaan.
+          Yksi suosikki kakku resepteistäni on Mango juustokakun valmistus.
+          Kerron teille miten tein sen. Tämä resepti on helppo ja yksinkertainen
+          tehdä. Se takaa täydellisen tasapainoin herkullisen mangon ja
+          tuorejuuston välillä. Tarvitset vain muutamia raaka-aineita kuten
+          keksi, voi, liivate, kuohukerma, tuorejuusto, sitruunamehua, sokeria,
+          vaniliinisokeria ja mangopiltti. Tietenkin voi käyttää mitä tahansa
+          keksiä tai tuorejuustoa. Tämä resepti ei ole vain pelkästään
+          Mango-juustokakkuun. Ohjeeni kattaa myös erilaiset erilaiset
+          täytevaihtoehdot, jotta voit muokata kakun juuri omiin tarpeisiisi
+          sopivaksi! Esimerkiksi voit lisätä vaikka passionin, jolloin siitä
+          tulee Mango-juustopassionkakku. Tai jos et halua mangoa, niin voit
+          korjata sen mansikalla tai jopa vademalla. Tämä resepti löytyy minun
+          Resepti sivulta, jossa näytän reseptin miten olen tehnyt muitakin
+          kakkuja.
         </p>
 
         <p className="text-lg mt-2">
@@ -97,10 +104,9 @@ export default function AboutMe() {
         </p>
 
         <p className="text-second ">
-          Toivon, että tämä blogi inpiroi sinua luomaan omia herkullisia ja
-          upeita kakkuelämyksiä. Jaa kommentteja, kysymyksiä ja omia
-          kokemuksiasi, sillä haluan kuulla mielipiteesi ja auttaa sinua
-          matkallasi kakkujen maailmassa.
+          Toivon, että tämä blogi inpiroi sinua upeita kakkuelämyksiä. Jaa
+          kommentteja, kysymyksiä ja omia kokemuksiasi, sillä haluan kuulla
+          mielipiteesi ja auttaa sinua matkallasi kakkujen maailmassa.
         </p>
       </div>
       <div className="">
