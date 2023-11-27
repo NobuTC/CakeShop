@@ -9,8 +9,46 @@ import {
 } from "@nextui-org/react";
 import moment from "moment";
 import "moment/locale/fi";
+import { useEffect, useState } from "react";
 
-function OrderSummaryPage({ orders }) {
+function OrderSummaryPage() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [realOrders, setRealOrder] = useState([]);
+
+  useEffect(() => {
+    async function getOrderSummary() {
+      try {
+        setIsLoading(true);
+        const res = await fetch(
+          process.env.NEXT_PUBLIC_URL + "/api/order/get",
+          {
+            cache: "no-store",
+            next: { revalidate: 1 }, // Recheck every second
+          }
+        );
+        if (res.status === 200) {
+          const { orders } = await res.json();
+          setRealOrder(orders);
+        } else {
+          setRealOrder([]);
+        }
+      } catch (error) {
+        console.error("Error fecthing orders data : ");
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    getOrderSummary();
+  }, []);
+
+  if (isLoading) {
+    return <div>Loading....</div>;
+  }
+
+  if (!realOrders || realOrders.length === 0) {
+    return null;
+  }
+
   moment.locale("fi");
 
   return (
@@ -26,7 +64,7 @@ function OrderSummaryPage({ orders }) {
         <TableColumn>Tehdyt tilaukset</TableColumn>
       </TableHeader>
       <TableBody>
-        {orders.map((order, index) => (
+        {realOrders.map((order, index) => (
           <TableRow key={index}>
             <TableCell>{order.buyer_first_name}</TableCell>
             <TableCell>{order.buyer_last_name}</TableCell>
