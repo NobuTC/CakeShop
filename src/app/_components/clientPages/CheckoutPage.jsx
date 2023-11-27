@@ -247,9 +247,6 @@ export function CheckoutPage1() {
                     <SelectItem key="pickup" value={0}>
                       Haluan noutaa itse
                     </SelectItem>
-                    <SelectItem key="delivery" value={1}>
-                      Haluan kuljetuksen
-                    </SelectItem>
                   </Select>
                 </div>
                 <div className="mt-5"></div>
