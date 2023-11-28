@@ -13,33 +13,26 @@ import { useEffect, useState } from "react";
 
 function OrderSummaryPage() {
   const [isLoading, setIsLoading] = useState(false);
-  const [realOrders, setRealOrder] = useState([]);
+  const [realOrders, setRealOrder] = useState();
+  async function getAllOrders() {
+    setIsLoading(true);
+    try {
+      const res = await fetch(process.env.NEXT_PUBLIC_URL + "/api/order/get");
+      if (res.status === 200) {
+        const { orders } = await res.json(); // parsin to json
+        setRealOrder(orders); //set to realorders
+      } else {
+        setRealOrder([]); // else give empty array
+      }
+    } catch (error) {
+      console.error("Error fecthing orders data : ");
+    }
+    setIsLoading(false); //stop loading
+  }
 
   useEffect(() => {
-    async function getOrderSummary() {
-      try {
-        setIsLoading(true);
-        const res = await fetch(
-          process.env.NEXT_PUBLIC_URL + "/api/order/get",
-          {
-            cache: "no-store",
-            next: { revalidate: 1 }, // Recheck every second
-          }
-        );
-        if (res.status === 200) {
-          const { orders } = await res.json();
-          setRealOrder(orders);
-        } else {
-          setRealOrder([]);
-        }
-      } catch (error) {
-        console.error("Error fecthing orders data : ");
-      } finally {
-        setIsLoading(false);
-      }
-    }
-    getOrderSummary();
-  }, []);
+    getAllOrders();
+  }, []); //  useEffect is called only once when component is created (sivun latauksen yhteydessä)
 
   if (isLoading) {
     return <div>Loading....</div>;
@@ -49,10 +42,10 @@ function OrderSummaryPage() {
     return null;
   }
 
-  moment.locale("fi");
+  moment.locale("fi"); // Set language with moment.js libarary
 
   return (
-    <Table aria-label="Example static collection table">
+    <Table aria-label="list of all orders">
       <TableHeader>
         <TableColumn>Etunimi</TableColumn>
         <TableColumn>Sukunimi</TableColumn>
